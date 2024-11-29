@@ -33,10 +33,13 @@ router.post('/accesoScv', cuenta.accesoScv);
 
 
 
+
+
 /*************************************************************************************************
  *                                D I C C I O N A R I O S                                        *
  *************************************************************************************************/
 router.post('/listarCatalogos', diccionarios.listarCatalogos);
+router.post('/listarDescripcionCatalogos', diccionarios.listarDescripcionCatalogos);
 
 
 

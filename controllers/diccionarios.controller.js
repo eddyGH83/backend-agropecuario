@@ -39,6 +39,43 @@ diccionarios.listarCatalogos = async (req, res) => {
 
 }
 
+// Listar descripcion de catalogos
+diccionarios.listarDescripcionCatalogos = async (req, res) => {      
+    console.log("hfsjhf kshfkjsh fskjfh ksdhf ksdhf ksd");
+
+    const { cuestionario } = req.body;
+
+    console.log("cuestionario: ", cuestionario);
+    
+    
+    try {
+        const catalogos = await pool_agro.query(`SELECT catalogo || ' | ' || cat_desc cat_desc, catalogo FROM codificacion.catalogo_upa_comunal WHERE cat_cuest=$1 GROUP BY catalogo, cat_desc ORDER BY catalogo ASC`,[cuestionario]);
+        res.status(200).json({
+            success: true,
+            data: catalogos.rows,
+            message: "Catalogos listados correctamente"
+        });
+    } catch (error) {
+        console.log("🚫 Error al listar catalogos: ", error);
+        res.status(500).json({
+            success: false,
+            data: [],
+            message: "Error al listar catalogos"
+        });        
+    }
+
+}
+
+
+
+
+// Editar catalogos
+diccionarios.editarCatalogos = async (req, res) => {
+
+    var { id_catalogo,  } = req.body;    
+
+}
+
 
 
 
